@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Unit tests for Baby Name Generator</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.16.0.css">
+    <style>
+        #submit{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- This is here to check the binding -->
+    <div id="submit"></div>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="http://code.jquery.com/qunit/qunit-1.16.0.js"></script>
+  <script src="OhBaby.js"></script>
+  <script>
+
+    QUnit.test("On Click Testing",function(assert){
+        var events = $._data(document.getElementById('submit'), "events");
+        var hasClick = (events != null);
+       assert.ok(hasClick,"Item has been Bound if True" );
+    });
+    
+    QUnit.test( "generate Name Testing", function( assert ) {
+        var newName = generateName(10,40);
+        
+        assert.ok( newName.length == 10, "Length should be 10 :: It is " + newName.length);
+        assert.ok( numberOfVowels(newName) == 4,
+                  "There should be 4 Vowels.  :: There are " + numberOfVowels(newName));
+    });
+    
+    
+    function numberOfVowels(word) {
+        var amount = 0;
+        for (var i = 0; i < word.length; i++)
+        {
+            var temp = word.charAt(i);
+            if (isVowel(temp)) {
+                amount++;
+            }
+        }
+        return amount;
+    }
+    
+    function isVowel(letter)
+    {
+        v = false;
+        vArray = ['a','e','i','o','u'];
+        for(var i = 0; i < vArray.length; i++)
+        {
+            if (vArray[i] == letter) {
+                return true;
+            }
+        }
+        return false;
+    }
+  </script>
+</body>
+</html>
