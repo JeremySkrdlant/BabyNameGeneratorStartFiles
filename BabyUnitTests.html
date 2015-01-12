@@ -26,7 +26,7 @@
        assert.ok(hasClick,"Item has been Bound if True" );
     });
     
-    QUnit.test( "generate Name Testing", function( assert ) {
+    QUnit.test( "generate Name Testing 10-40", function( assert ) {
         var newName = generateName(10,40);
         
         assert.ok( newName.length == 10, "Length should be 10 :: It is " + newName.length);
@@ -34,6 +34,21 @@
                   "There should be 4 Vowels.  :: There are " + numberOfVowels(newName));
     });
     
+    
+    QUnit.test( "generate Name Testing 9-50", function( assert ) {
+        var newName = generateName(9,50);
+        
+        assert.ok( newName.length == 9, "Length should be 9 :: It is " + newName.length);
+        assert.ok( numberOfVowels(newName) == 5,
+                  "There should be 5 Vowels.  :: There are " + numberOfVowels(newName));
+    });
+    QUnit.test( "generate Name Testing 6-50", function( assert ) {
+        var newName = generateName(6,50);
+        
+        assert.ok( newName.length == 6, "Length should be 6 :: It is " + newName.length);
+        assert.ok( numberOfVowels(newName) == 3,
+                  "There should be 3 Vowels.  :: There are " + numberOfVowels(newName));
+    });
     
     function numberOfVowels(word) {
         var amount = 0;
